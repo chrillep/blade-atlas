@@ -18,8 +18,11 @@
                         <x-wirebook::application.sidebar.menu.item href="{{route('wirebook.story', ['story' => 'component-three'])}}">
                             Component Three
                         </x-wirebook::application.sidebar.menu.item>
-                        <x-wirebook::application.sidebar.menu.item href="{{route('wirebook.story', ['story' => 'test-story'])}}">
-                            Test Story
+                        <x-wirebook::application.sidebar.menu.item href="{{route('wirebook.story', ['story' => 'test-button'])}}">
+                            Test Button
+                        </x-wirebook::application.sidebar.menu.item>
+                        <x-wirebook::application.sidebar.menu.item href="{{route('wirebook.story', ['story' => 'test-button-group'])}}">
+                            Test Button Group
                         </x-wirebook::application.sidebar.menu.item>
                     </x-wirebook::application.sidebar.menu.group>
                 </li>

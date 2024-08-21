@@ -25,11 +25,8 @@
                     </div>
                 </main>
 
-                <aside id="form" class="block w-96 overflow-y-auto border-l border-gray-200 px-4 py-6 sm:px-6 lg:px-8">
-{{--                    {{ $form }}--}}
-                </aside>
-{{--                @if($form instanceof \Illuminate\Contracts\Support\Htmlable)--}}
-{{--                @endif--}}
+                <x-wirebook::application.panel />
+
             </div>
 
 

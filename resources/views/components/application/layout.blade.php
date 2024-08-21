@@ -32,6 +32,9 @@
 
 @stack('modals')
 
+<script defer src="https://unpkg.com/@alpinejs/ui@3.14.1-beta.0/dist/cdn.min.js"></script>
+<script defer src="https://unpkg.com/@alpinejs/focus@3.14.1/dist/cdn.min.js"></script>
+
 @livewireScripts
 </body>
 </html>

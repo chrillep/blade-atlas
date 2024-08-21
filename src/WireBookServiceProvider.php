@@ -32,6 +32,6 @@ class WireBookServiceProvider extends PackageServiceProvider
     public function packageBooted()
     {
         Livewire::component('wirebook-app', Application::class);
-        Livewire::component('wirebook-test-story', Tests\Story::class);
+        Livewire::component('wirebook-test-story', Tests\Button::class);
     }
 }

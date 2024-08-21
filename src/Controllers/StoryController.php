@@ -2,6 +2,7 @@
 
 namespace Arrgh11\WireBook\Controllers;
 
+use Illuminate\Support\Str;
 use Livewire\Features\SupportPageComponents\PageComponentConfig;
 use Livewire\Features\SupportPageComponents\SupportPageComponents;
 
@@ -10,7 +11,7 @@ class StoryController
     public function index(string $story)
     {
 
-        if ($story !== 'test-story') {
+        if (!Str::startsWith($story, 'test-')) {
             return view('wirebook::application.index', ['story' => $story]);
         }
 
@@ -19,9 +20,13 @@ class StoryController
         // simple invokable controllers. Ex: Route::get('...', SomeLivewireComponent::class);
         $html = null;
 
-        $layoutConfig = SupportPageComponents::interceptTheRenderOfTheComponentAndRetreiveTheLayoutConfiguration(function () use (&$html) {
+        $layoutConfig = SupportPageComponents::interceptTheRenderOfTheComponentAndRetreiveTheLayoutConfiguration(function () use (&$html, $story) {
             //            $params = SupportPageComponents::gatherMountMethodParamsFromRouteParameters($storyClass);
-            $storyClass = \Arrgh11\WireBook\Livewire\Tests\Story::class;
+
+            $storyClass = match($story) {
+                'test-button' => \Arrgh11\WireBook\Livewire\Tests\Button::class,
+                'test-button-group' => \Arrgh11\WireBook\Livewire\Tests\ButtonGroup::class,
+            };
 
             $html = app('livewire')->mount($storyClass);
 

@@ -11,7 +11,7 @@ class NewStoryCommand extends Command
 {
     protected $signature = 'wirebook:story';
 
-    protected $description = 'Create a new Story';
+    protected $description = 'Create a new Button';
 
     public function handle(): void
     {
@@ -22,7 +22,7 @@ class NewStoryCommand extends Command
         //ask for the story description
 
         //ask for the story group
-        $group = text(label: 'What is the Story\'s name?', default: 'General', required: true);
+        $group = text(label: 'What is the Story\'s group?', default: 'General', required: true);
 
         //output the story name
         $this->info("Story name: $name");
@@ -31,10 +31,10 @@ class NewStoryCommand extends Command
         //create a group for the story if it doesn't exist
         $studlyGroup = Str::studly($group);
 
-        //make a new Story component with the name in the App\WireBook\Stories\{group} namespace
+        //make a new Button component with the name in the App\WireBook\Stories\{group} namespace
         $studlyName = Str::studly($name);
 
-        //make a new Story view with the name in the resources/views/wirebook/stories/{group} directory
+        //make a new Button view with the name in the resources/views/wirebook/stories/{group} directory
 
     }
 }

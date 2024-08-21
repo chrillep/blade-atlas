@@ -4,7 +4,7 @@
 
 {{--    {{ $slot }}--}}
 
-    oh sup {{ $story }}
+    oh sup {{ $story ?? '' }}
 
 
 </x-wirebook::application>

@@ -19,6 +19,6 @@ Route::prefix('wirebook')->name('wirebook.')->group(function () {
     //
     //    })->name('story');
 
-    Route::get('/stories/{story}', \Arrgh11\WireBook\Livewire\Tests\Story::class)->name('story');
+    Route::get('/stories/{story}', \Arrgh11\WireBook\Livewire\Tests\Button::class)->name('story');
 
 });
