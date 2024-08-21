@@ -2,14 +2,12 @@
 
 namespace Arrgh11\WireBook\Livewire;
 
-use Illuminate\Support\Facades\Blade;
 use Livewire\Component;
 
 abstract class Story extends Component implements Contracts\IsStory
 {
-
-    use Concerns\InteractsWithControls;
     use Concerns\InteractsWithCode;
+    use Concerns\InteractsWithControls;
 
     public function render()
     {
@@ -18,5 +16,4 @@ abstract class Story extends Component implements Contracts\IsStory
             'code' => $this->getCode(),
         ]);
     }
-
 }

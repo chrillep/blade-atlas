@@ -4,12 +4,10 @@ namespace Arrgh11\WireBook\Livewire\Concerns;
 
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\View;
-use Illuminate\Support\Str;
 use Torchlight\Blade\BladeManager;
 
 trait InteractsWithCode
 {
-
     public function getCode()
     {
         //get the code fragment from the view
@@ -36,16 +34,16 @@ trait InteractsWithCode
 
         // Search and replace Blade variables
         foreach ($variables as $variable => $replacement) {
-            $fragmentContent = preg_replace('/{{\s*\$' . preg_quote($variable, '/') . '\s*}}/', $replacement, $fragmentContent);
+            $fragmentContent = preg_replace('/{{\s*\$'.preg_quote($variable, '/').'\s*}}/', $replacement, $fragmentContent);
         }
 
         return $fragmentContent;
 
         $rendered = BladeManager::renderContent($fragmentContent);
+
         return $rendered;
 
-//        return Blade::render('<x-torchlight-code language="blade" theme="github-dark">'.$rendered.'</x-torchlight-code>')
+        //        return Blade::render('<x-torchlight-code language="blade" theme="github-dark">'.$rendered.'</x-torchlight-code>')
 
     }
-
 }

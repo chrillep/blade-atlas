@@ -11,7 +11,7 @@ class StoryController
     public function index(string $story)
     {
 
-        if (!Str::startsWith($story, 'test-')) {
+        if (! Str::startsWith($story, 'test-')) {
             return view('wirebook::application.index', ['story' => $story]);
         }
 
@@ -23,7 +23,7 @@ class StoryController
         $layoutConfig = SupportPageComponents::interceptTheRenderOfTheComponentAndRetreiveTheLayoutConfiguration(function () use (&$html, $story) {
             //            $params = SupportPageComponents::gatherMountMethodParamsFromRouteParameters($storyClass);
 
-            $storyClass = match($story) {
+            $storyClass = match ($story) {
                 'test-button' => \Arrgh11\WireBook\Livewire\Tests\Button::class,
                 'test-button-group' => \Arrgh11\WireBook\Livewire\Tests\ButtonGroup::class,
             };

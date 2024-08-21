@@ -8,10 +8,10 @@ use Illuminate\Support\Facades\Blade;
 #[\Attribute]
 class Control
 {
-
     public ControlEnum $controlType = ControlEnum::TEXT;
 
     public string $name = '';
+
     public string $label = '';
 
     public ?string $view = null;
@@ -21,8 +21,7 @@ class Control
         string $label = '',
         ?string $view = null,
         ?string $name = null
-    )
-    {
+    ) {
         $this->controlType = $type;
 
         $this->label = $label;
@@ -34,6 +33,7 @@ class Control
     public function setName(string $name): Control
     {
         $this->name = $name;
+
         return $this;
     }
 
@@ -46,5 +46,4 @@ class Control
             'name' => $this->name,
         ]);
     }
-
 }

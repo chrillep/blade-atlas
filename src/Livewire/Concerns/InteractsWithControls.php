@@ -3,11 +3,9 @@
 namespace Arrgh11\WireBook\Livewire\Concerns;
 
 use Arrgh11\WireBook\Livewire\Attributes\Control;
-use Illuminate\Support\Facades\Blade;
 
 trait InteractsWithControls
 {
-
     public function getControls(): array
     {
 
@@ -26,8 +24,6 @@ trait InteractsWithControls
 
         return $controls;
 
-
-
     }
 
     public function renderControls(): string
@@ -41,5 +37,4 @@ trait InteractsWithControls
 
         return $controlHtml;
     }
-
 }

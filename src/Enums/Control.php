@@ -4,7 +4,6 @@ namespace Arrgh11\WireBook\Enums;
 
 enum Control: string
 {
-
     case TEXT = 'text';
     case TEXTAREA = 'textarea';
     case SELECT = 'select';
@@ -25,6 +24,4 @@ enum Control: string
             self::TOGGLE => 'wirebook::support.controls.toggle',
         };
     }
-
-
 }
