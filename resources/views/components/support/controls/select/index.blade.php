@@ -1,22 +1,18 @@
-<!--
-  This example requires some changes to your config:
+@props([
+    'label' => 'Label',
+    'options' => []
+])
 
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-    ],
-  }
-  ```
--->
-<div>
-    <label for="location" class="block text-sm font-medium leading-6 text-gray-900">Location</label>
-    <select id="location" name="location" class="mt-2 block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
-        <option>United States</option>
-        <option selected>Canada</option>
-        <option>Mexico</option>
+<div x-id="['select-control']">
+    <label x-bind:for="$id('select-control')" class="block text-sm font-medium leading-6 text-gray-900">{{ $label }}</label>
+    <select
+        {{ $attributes->class([
+            'block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6'
+        ]) }}
+        name="location"
+        x-bind:id="$id('select-control')">
+        @foreach($options as $value => $label)
+            <option value="{{$value}}">{{ $label }}</option>
+        @endforeach
     </select>
 </div>

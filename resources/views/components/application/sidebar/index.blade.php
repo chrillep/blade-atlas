@@ -9,15 +9,6 @@
             <ul role="list" class="flex flex-1 flex-col gap-y-7">
                 <li>
                     <x-wirebook::application.sidebar.menu.group title="Application">
-                        <x-wirebook::application.sidebar.menu.item href="{{route('wirebook.story', ['story' => 'component-one'])}}">
-                            Component One
-                        </x-wirebook::application.sidebar.menu.item>
-                        <x-wirebook::application.sidebar.menu.item href="{{route('wirebook.story', ['story' => 'component-two'])}}">
-                            Component Two
-                        </x-wirebook::application.sidebar.menu.item>
-                        <x-wirebook::application.sidebar.menu.item href="{{route('wirebook.story', ['story' => 'component-three'])}}">
-                            Component Three
-                        </x-wirebook::application.sidebar.menu.item>
                         <x-wirebook::application.sidebar.menu.item href="{{route('wirebook.story', ['story' => 'test-button'])}}">
                             Test Button
                         </x-wirebook::application.sidebar.menu.item>

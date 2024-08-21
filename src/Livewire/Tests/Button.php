@@ -11,7 +11,20 @@ use Livewire\Attributes\Layout;
 class Button extends Story
 {
     #[Control(ControlType::TEXT, 'Button Text')]
-    public string $buttonText = 'Button Text';
+    public string $text = 'Button Text';
+
+    #[Control(
+        type: ControlType::SELECT,
+        label: 'Button Size',
+        options: [
+            'xs' => 'Extra Small',
+            'sm' => 'Small',
+            'md' => 'Medium',
+            'lg' => 'Large',
+            'xl' => 'Extra Large',
+        ]
+    )]
+    public string $size = 'xs'; //xs, sm, md, lg, xl
 
     protected string $view = 'wirebook::livewire.tests.button';
 }

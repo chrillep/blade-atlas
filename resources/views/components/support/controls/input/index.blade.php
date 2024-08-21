@@ -1,5 +1,6 @@
 @props([
     'label' => 'Label',
+    'options' => []
 ])
 
 <div x-id="['text-control']">

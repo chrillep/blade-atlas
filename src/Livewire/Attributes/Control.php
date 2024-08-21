@@ -16,17 +16,22 @@ class Control
 
     public ?string $view = null;
 
+    public array $options = [];
+
     public function __construct(
         ControlEnum $type,
         string $label = '',
         ?string $view = null,
-        ?string $name = null
+        ?string $name = null,
+        array $options = []
     ) {
         $this->controlType = $type;
 
         $this->label = $label;
 
         $this->view = $view ? $view : $this->controlType->getView();
+
+        $this->options = $options;
 
     }
 
@@ -40,10 +45,11 @@ class Control
     public function renderControl(): string
     {
 
-        return Blade::render('<x-dynamic-component :component="$view" :label="$label" wire:model.live="{{$name}}" />', [
+        return Blade::render('<x-dynamic-component :component="$view" :label="$label" :options="$options" wire:model.live="{{$name}}" />', [
             'view' => $this->view,
             'label' => $this->label,
             'name' => $this->name,
+            'options' => $this->options,
         ]);
     }
 }
