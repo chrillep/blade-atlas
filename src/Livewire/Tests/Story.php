@@ -8,9 +8,8 @@ use Livewire\Component;
 #[Layout('wirebook::application.story')]
 class Story extends Component
 {
-
     public string $buttonText = 'Button Text';
-//    public ?string $story;
+    //    public ?string $story;
 
     public function render()
     {

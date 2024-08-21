@@ -20,7 +20,7 @@ class StoryController
         $html = null;
 
         $layoutConfig = SupportPageComponents::interceptTheRenderOfTheComponentAndRetreiveTheLayoutConfiguration(function () use (&$html) {
-//            $params = SupportPageComponents::gatherMountMethodParamsFromRouteParameters($storyClass);
+            //            $params = SupportPageComponents::gatherMountMethodParamsFromRouteParameters($storyClass);
             $storyClass = \Arrgh11\WireBook\Livewire\Tests\Story::class;
 
             $html = app('livewire')->mount($storyClass);

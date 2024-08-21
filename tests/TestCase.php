@@ -2,9 +2,9 @@
 
 namespace Arrgh11\WireBook\Tests;
 
+use Arrgh11\WireBook\WireBookServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Arrgh11\WireBook\WireBookServiceProvider;
 
 class TestCase extends Orchestra
 {
