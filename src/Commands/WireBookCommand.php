@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace Arrgh11\WireBook\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class WireBookCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'livewire-storybook';
 
     public $description = 'My command';
 
