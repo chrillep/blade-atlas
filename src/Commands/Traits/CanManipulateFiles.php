@@ -2,7 +2,6 @@
 
 namespace Arrgh11\WireBook\Commands\Traits;
 
-
 use Illuminate\Filesystem\Filesystem;
 use ReflectionClass;
 
@@ -20,7 +19,7 @@ trait CanManipulateFiles
                 continue;
             }
 
-            if (! confirm(basename($path) . ' already exists, do you want to overwrite it?')) {
+            if (! confirm(basename($path).' already exists, do you want to overwrite it?')) {
                 $this->components->error("{$path} already exists, aborting.");
 
                 return true;
@@ -40,7 +39,7 @@ trait CanManipulateFiles
         $filesystem = app(Filesystem::class);
 
         if (! $this->fileExists($stubPath = base_path("stubs/wirebook/stories/{$stub}.stub"))) {
-            $stubPath = $this->getDefaultStubPath() . "/stories/{$stub}.stub";
+            $stubPath = $this->getDefaultStubPath()."/stories/{$stub}.stub";
         }
 
         $stub = str($filesystem->get($stubPath));

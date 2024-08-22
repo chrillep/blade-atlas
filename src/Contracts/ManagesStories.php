@@ -7,7 +7,6 @@ use Livewire\Livewire;
 
 trait ManagesStories
 {
-
     protected $stories = [];
 
     public function getStories()
@@ -31,7 +30,7 @@ trait ManagesStories
             //loop through the groups
             foreach ($groups as $group) {
                 //get the stories in the group
-                $stories = scandir($path . '/' . $group);
+                $stories = scandir($path.'/'.$group);
 
                 //remove . and .. from the array
                 $stories = array_diff($stories, ['.', '..']);
@@ -42,9 +41,9 @@ trait ManagesStories
 
                     $storyName = Str::replace('.php', '', $story);
 
-                    $kebab = Str::kebab('wirebook ' . $group . ' ' . $storyName);
+                    $kebab = Str::kebab('wirebook '.$group.' '.$storyName);
 
-                    $className = 'App\\WireBook\\Stories\\' . $group . '\\' . $storyName;
+                    $className = 'App\\WireBook\\Stories\\'.$group.'\\'.$storyName;
 
                     Livewire::component($kebab, $className);
 
@@ -63,5 +62,4 @@ trait ManagesStories
 
         $this->stories = $storyGroups;
     }
-
 }
