@@ -1,0 +1,14 @@
+<?php
+
+namespace {{ namespace }};
+
+use Livewire\Attributes\Layout;
+use Arrgh11\WireBook\Livewire\Story;
+
+#[Layout('wirebook::application.story')]
+class {{ story }} extends Story
+{
+
+    protected string $view = '{{ viewpath }}';
+
+}

@@ -5,6 +5,7 @@ namespace Arrgh11\WireBook;
 use Arrgh11\WireBook\Commands\Stories;
 use Arrgh11\WireBook\Livewire\Application;
 use Arrgh11\WireBook\Livewire\Tests;
+use Illuminate\Support\Str;
 use Livewire\Livewire;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
@@ -33,5 +34,9 @@ class WireBookServiceProvider extends PackageServiceProvider
     {
         Livewire::component('wirebook-app', Application::class);
         Livewire::component('wirebook-test-story', Tests\Button::class);
+
+        \Arrgh11\WireBook\Facades\WireBook::discoverStories();
+
     }
+
 }

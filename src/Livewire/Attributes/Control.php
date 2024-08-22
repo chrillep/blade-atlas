@@ -19,13 +19,13 @@ class Control
     public array $options = [];
 
     public function __construct(
-        ControlEnum $type,
+        string|ControlEnum $type,
         string $label = '',
         ?string $view = null,
         ?string $name = null,
         array $options = []
     ) {
-        $this->controlType = $type;
+        $this->controlType = is_string($type) ? ControlEnum::tryFrom($type) : $type;
 
         $this->label = $label;
 
@@ -45,7 +45,7 @@ class Control
     public function renderControl(): string
     {
 
-        return Blade::render('<x-dynamic-component :component="$view" :label="$label" :options="$options" wire:model.live="{{$name}}" />', [
+        return Blade::render('<x-dynamic-component :component="$view" :label="$label" :options="$options" name="{{$name}}" />', [
             'view' => $this->view,
             'label' => $this->label,
             'name' => $this->name,

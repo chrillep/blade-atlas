@@ -1,0 +1,11 @@
+@extends('wirebook::livewire.story')
+
+@section('content')
+@fragment('code')
+
+<div>
+<!-- Your component here-->
+</div>
+
+@endfragment
+@endsection

@@ -1,5 +1,6 @@
 @props([
     'label' => 'Label',
+    'name' => 'text',
     'options' => []
 ])
 
@@ -13,6 +14,7 @@
 
             type="text"
             name="text"
+            wire:model.live="{{ $name }}"
             x-bind:id="$id('text-control')"
             placeholder="{{ $label }}">
     </div>

@@ -8,14 +8,32 @@
         <nav class="flex flex-1 flex-col">
             <ul role="list" class="flex flex-1 flex-col gap-y-7">
                 <li>
-                    <x-wirebook::application.sidebar.menu.group title="Application">
-                        <x-wirebook::application.sidebar.menu.item href="{{route('wirebook.story', ['story' => 'test-button'])}}">
-                            Test Button
-                        </x-wirebook::application.sidebar.menu.item>
-                        <x-wirebook::application.sidebar.menu.item href="{{route('wirebook.story', ['story' => 'test-button-group'])}}">
-                            Test Button Group
-                        </x-wirebook::application.sidebar.menu.item>
-                    </x-wirebook::application.sidebar.menu.group>
+
+                    @php
+                        $stories = \Arrgh11\WireBook\Facades\WireBook::getStories();
+                    @endphp
+
+                    @foreach($stories as $group => $storyList)
+                        <x-wirebook::application.sidebar.menu.group title="{{ $group }}">
+                            @foreach($storyList as $story)
+                                <x-wirebook::application.sidebar.menu.item href="{{route('wirebook.story', ['story' => $story['route']])}}">
+                                    {{ $story['title'] }}
+                                </x-wirebook::application.sidebar.menu.item>
+                            @endforeach
+                        </x-wirebook::application.sidebar.menu.group>
+                    @endforeach
+
+                    @if(config('wirebook.show_tests'))
+                        <x-wirebook::application.sidebar.menu.group title="Tests">
+                            <x-wirebook::application.sidebar.menu.item href="{{route('wirebook.story', ['story' => 'test-button'])}}">
+                                Test Button
+                            </x-wirebook::application.sidebar.menu.item>
+                            <x-wirebook::application.sidebar.menu.item href="{{route('wirebook.story', ['story' => 'test-button-group'])}}">
+                                Test Button Group
+                            </x-wirebook::application.sidebar.menu.item>
+                        </x-wirebook::application.sidebar.menu.group>
+                    @endif
+
                 </li>
 
                 <li class="mt-auto">
