@@ -8,7 +8,6 @@ use Arrgh11\WireBook\Livewire\Application;
 use Arrgh11\WireBook\Livewire\Tests;
 use Arrgh11\WireBook\Tools\Viewport;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Str;
 use Livewire\Livewire;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
@@ -51,10 +50,9 @@ class WireBookServiceProvider extends PackageServiceProvider
 
         \Arrgh11\WireBook\Facades\WireBook::registerTool(Viewport::class);
 
-//        \Arrgh11\WireBook\Facades\WireBook::discoverTools();
+        //        \Arrgh11\WireBook\Facades\WireBook::discoverTools();
 
         \Arrgh11\WireBook\Facades\WireBook::discoverStories();
 
     }
-
 }

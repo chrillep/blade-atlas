@@ -6,7 +6,6 @@ use Arrgh11\WireBook\Concerns\HasWirebookTooling;
 
 abstract class Tool implements HasWirebookTooling
 {
-
     //Blade view
     protected static string $view = '';
 

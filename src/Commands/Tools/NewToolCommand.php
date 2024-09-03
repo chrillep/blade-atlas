@@ -10,7 +10,6 @@ use function Laravel\Prompts\text;
 
 class NewToolCommand extends Command
 {
-
     use Traits\CanManipulateFiles;
 
     protected $signature = 'wirebook:tool {--force}';
@@ -57,11 +56,12 @@ class NewToolCommand extends Command
 
         $files = [
             $storyPath,
-            $viewPath
+            $viewPath,
         ];
 
         if (! $this->option('force') && $this->checkForCollision($files)) {
             $this->error('Collision detected. Aborting.');
+
             return 0;
         }
 
@@ -232,8 +232,8 @@ class NewToolCommand extends Command
 
                 if ($hasSoftDeletes) {
                     $modifyQueryUsing .= '->modifyQueryUsing(fn (Builder $query) => $query->withoutGlobalScopes([';
-                    $modifyQueryUsing .= PHP_EOL . '    SoftDeletingScope::class,';
-                    $modifyQueryUsing .= PHP_EOL . ']))';
+                    $modifyQueryUsing .= PHP_EOL.'    SoftDeletingScope::class,';
+                    $modifyQueryUsing .= PHP_EOL.']))';
 
                     $tableBulkActions[] = 'Tables\Actions\RestoreBulkAction::make(),';
                     $tableBulkActions[] = 'Tables\Actions\ForceDeleteBulkAction::make(),';
@@ -283,7 +283,7 @@ class NewToolCommand extends Command
 
         $path = (string) str($page)
             ->prepend('/')
-            ->prepend(empty($resource) ? $path : $resourcePath . "\\{$resource}\\Pages\\")
+            ->prepend(empty($resource) ? $path : $resourcePath."\\{$resource}\\Pages\\")
             ->replace('\\', '/')
             ->replace('//', '/')
             ->append('.php');
@@ -313,8 +313,8 @@ class NewToolCommand extends Command
             class_exists($potentialCluster) &&
             is_subclass_of($potentialCluster, Cluster::class)
         ) {
-            $clusterAssignment = $this->indentString(PHP_EOL . PHP_EOL . 'protected static ?string $cluster = ' . class_basename($potentialCluster) . '::class;');
-            $clusterImport = "use {$potentialCluster};" . PHP_EOL;
+            $clusterAssignment = $this->indentString(PHP_EOL.PHP_EOL.'protected static ?string $cluster = '.class_basename($potentialCluster).'::class;');
+            $clusterImport = "use {$potentialCluster};".PHP_EOL;
         }
 
         if (empty($resource)) {
@@ -322,15 +322,15 @@ class NewToolCommand extends Command
                 'class' => $pageClass,
                 'clusterAssignment' => $clusterAssignment,
                 'clusterImport' => $clusterImport,
-                'namespace' => $namespace . ($pageNamespace !== '' ? "\\{$pageNamespace}" : ''),
+                'namespace' => $namespace.($pageNamespace !== '' ? "\\{$pageNamespace}" : ''),
                 'view' => $view,
             ]);
         } elseif ($resourcePage === 'ManageRelatedRecords') {
             $this->copyStubToApp('ResourceManageRelatedRecordsPage', $path, [
                 'baseResourcePage' => "Filament\\Resources\\Pages\\{$resourcePage}",
                 'baseResourcePageClass' => $resourcePage,
-                'modifyQueryUsing' => filled($modifyQueryUsing ?? null) ? PHP_EOL . $this->indentString($modifyQueryUsing, 3) : $modifyQueryUsing ?? '',
-                'namespace' => "{$resourceNamespace}\\{$resource}\\Pages" . ($pageNamespace !== '' ? "\\{$pageNamespace}" : ''),
+                'modifyQueryUsing' => filled($modifyQueryUsing ?? null) ? PHP_EOL.$this->indentString($modifyQueryUsing, 3) : $modifyQueryUsing ?? '',
+                'namespace' => "{$resourceNamespace}\\{$resource}\\Pages".($pageNamespace !== '' ? "\\{$pageNamespace}" : ''),
                 'recordTitleAttribute' => $recordTitleAttribute ?? null,
                 'relationship' => $relationship ?? null,
                 'resource' => "{$resourceNamespace}\\{$resource}",
@@ -348,9 +348,9 @@ class NewToolCommand extends Command
             ]);
         } else {
             $this->copyStubToApp($resourcePage === 'custom' ? 'CustomResourcePage' : 'ResourcePage', $path, [
-                'baseResourcePage' => 'Filament\\Resources\\Pages\\' . ($resourcePage === 'custom' ? 'Page' : $resourcePage),
+                'baseResourcePage' => 'Filament\\Resources\\Pages\\'.($resourcePage === 'custom' ? 'Page' : $resourcePage),
                 'baseResourcePageClass' => $resourcePage === 'custom' ? 'Page' : $resourcePage,
-                'namespace' => "{$resourceNamespace}\\{$resource}\\Pages" . ($pageNamespace !== '' ? "\\{$pageNamespace}" : ''),
+                'namespace' => "{$resourceNamespace}\\{$resource}\\Pages".($pageNamespace !== '' ? "\\{$pageNamespace}" : ''),
                 'resource' => "{$resourceNamespace}\\{$resource}",
                 'resourceClass' => $resourceClass,
                 'resourcePageClass' => $pageClass,
@@ -370,5 +370,4 @@ class NewToolCommand extends Command
 
         return static::SUCCESS;
     }
-
 }

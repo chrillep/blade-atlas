@@ -4,7 +4,6 @@ namespace Arrgh11\WireBook\Contracts;
 
 trait ManagesTools
 {
-
     protected $tools = [];
 
     public function getTools()
@@ -16,7 +15,7 @@ trait ManagesTools
         foreach ($this->tools as $tool) {
             $tools[] = [
                 'view' => $tool::view(),
-                'component' => $tool::component()
+                'component' => $tool::component(),
             ];
         }
 
@@ -28,5 +27,4 @@ trait ManagesTools
     {
         $this->tools[] = $tool;
     }
-
 }
