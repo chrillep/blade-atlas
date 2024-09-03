@@ -4,7 +4,7 @@
 return [
     'discover' => [
         'paths' => [
-//            app_path('WireBook/Stories'),
+            //            app_path('WireBook/Stories'),
         ],
     ],
     'globals' => [

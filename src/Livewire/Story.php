@@ -2,7 +2,6 @@
 
 namespace Arrgh11\WireBook\Livewire;
 
-use Illuminate\Support\Str;
 use Livewire\Component;
 
 abstract class Story extends Component implements Contracts\IsStory

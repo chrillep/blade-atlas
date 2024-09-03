@@ -3,7 +3,6 @@
 namespace Arrgh11\WireBook\Controllers;
 
 use Arrgh11\WireBook\Facades\WireBook;
-use Illuminate\Support\Str;
 use Livewire\Features\SupportPageComponents\PageComponentConfig;
 use Livewire\Features\SupportPageComponents\SupportPageComponents;
 
