@@ -1,4 +1,4 @@
-<aside class="block w-96 overflow-y-auto border-l border-gray-200 px-4 py-6 sm:px-6 lg:px-8">
+<aside class="block bg-gray-100 w-96 overflow-y-auto border-l border-gray-200 px-4 py-6 sm:px-6 lg:px-8">
 
     <x-wirebook::support.tabs>
         <x-slot:list>

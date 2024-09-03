@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ $title ?? config('app.name', 'Laravel') }}</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -17,24 +17,35 @@
     <!-- Styles -->
     @livewireStyles
 </head>
-<body class="font-sans antialiased">
-<x-banner />
+    <body class="font-sans antialiased">
 
-<div class="min-h-screen bg-gray-100 flex flex-col">
+        <div class="min-h-screen bg-gray-200 flex flex-col">
 
-    <!-- Page Content -->
-    <main class="flex h-full grow">
+            <!-- Page Content -->
+            <main class="flex h-full grow">
 
-        {{ $slot }}
+                {{ $slot }}
 
-    </main>
-</div>
+            </main>
+        </div>
 
-@stack('modals')
+        @stack('modals')
 
-<script defer src="https://unpkg.com/@alpinejs/ui@3.14.1-beta.0/dist/cdn.min.js"></script>
-<script defer src="https://unpkg.com/@alpinejs/focus@3.14.1/dist/cdn.min.js"></script>
+        <script defer src="https://unpkg.com/@alpinejs/ui@3.14.1-beta.0/dist/cdn.min.js"></script>
+        <script defer src="https://unpkg.com/@alpinejs/focus@3.14.1/dist/cdn.min.js"></script>
 
-@livewireScripts
-</body>
+        <script>
+            document.addEventListener('alpine:init', () => {
+                @php
+                    $tools = \Arrgh11\WireBook\Facades\WireBook::getTools();
+                @endphp
+
+                @foreach($tools as $tool)
+                    {!! $tool['component'] !!}
+                @endforeach
+            })
+        </script>
+
+        @livewireScripts
+    </body>
 </html>

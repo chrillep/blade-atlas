@@ -1,4 +1,4 @@
-<x-wirebook::application>
+<x-wirebook::application :title="$title">
 
     {{--    <livewire:wirebook-app />--}}
     {{ $slot }}

@@ -7,5 +7,8 @@ return [
 //            app_path('WireBook/Stories'),
         ],
     ],
+    'globals' => [
+        'layout' => 'wirebook::application.story',
+    ],
     'show_tests' => false,
 ];

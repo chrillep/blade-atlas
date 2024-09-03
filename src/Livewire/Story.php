@@ -27,8 +27,11 @@ abstract class Story extends Component implements Contracts\IsStory
     public function render()
     {
         return view($this->view, [
-            'controls' => $this->renderControls(),
-            'code' => $this->getCode(),
-        ]);
+                'title' => $this->getStoryName(),
+                'controls' => $this->renderControls(),
+                'code' => $this->getCode(),
+            ])
+            ->title($this->getStoryName())
+            ->layout(config('wirebook.globals.layout'));
     }
 }

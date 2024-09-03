@@ -10,4 +10,6 @@ class WireBook
 
     use Contracts\ManagesStories;
 
+    use Contracts\ManagesTools;
+
 }
