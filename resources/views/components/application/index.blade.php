@@ -25,6 +25,7 @@
                         @endphp
 
                         @foreach($tools as $tool)
+                            {{-- @include($tool['view']) --}}
                             <x-dynamic-component :component="$tool['view']" />
                         @endforeach
                     </x-wirebook::application.toolbar>

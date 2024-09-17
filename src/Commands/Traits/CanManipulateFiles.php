@@ -38,8 +38,8 @@ trait CanManipulateFiles
     {
         $filesystem = app(Filesystem::class);
 
-        if (! $this->fileExists($stubPath = base_path("stubs/wirebook/stories/{$stub}.stub"))) {
-            $stubPath = $this->getDefaultStubPath()."/stories/{$stub}.stub";
+        if (! $this->fileExists($stubPath = base_path("stubs/wirebook/{$stub}.stub"))) {
+            $stubPath = $this->getDefaultStubPath()."/{$stub}.stub";
         }
 
         $stub = str($filesystem->get($stubPath));

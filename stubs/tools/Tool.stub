@@ -1,0 +1,19 @@
+<?php
+
+namespace {{ namespace }};
+
+use Arrgh11\WireBook\Tools\Tool;
+
+class {{ tool }} extends Tool
+{
+
+    //Blade view
+    protected static string $view = '{{ viewpath }}';
+
+
+    //Alpine component
+    protected static string $component = <<<JS
+Alpine.store('{{ component }}', {});
+JS;
+
+}

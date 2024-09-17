@@ -22,17 +22,25 @@ class NewStoryCommand extends Command
         //ask for the story name
         $name = text(label: 'What is the Story\'s name?', required: true);
 
+        $category = text(label: 'What is the Story\'s category?', default: 'General', required: true);
+
+        $folder = text(label: 'Is the Story inside a folder?', default: '', required: false);
+
         //ask for the story description
 
-        //ask for the story group
-        $group = text(label: 'What is the Story\'s group?', default: 'General', required: true);
+        // //ask for the story group
+        // $group = text(label: 'What is the Story\'s group?', default: 'General', required: true);
 
         //output the story name
         $this->info("Story name: $name");
-        $this->info("Story group: $group");
+        $this->info("Story category: $category");
 
-        //create a group for the story if it doesn't exist
-        $studlyGroup = Str::studly($group);
+        if ($folder) {
+            $this->info("Story folder: $folder");
+        }
+
+        //create a category for the story if it doesn't exist
+        $studlyGroup = Str::studly($category);
 
         //make a new Story component with the name in the App\WireBook\Stories\{group} namespace
         $studlyName = Str::studly($name);
@@ -74,13 +82,13 @@ class NewStoryCommand extends Command
             return 0;
         }
 
-        $this->copyStubToApp('Story', $storyPath, [
+        $this->copyStubToApp('stories/Story', $storyPath, [
             'namespace' => "App\\WireBook\\Stories\\{$studlyGroup}",
             'story' => $studlyName,
             'viewpath' => $storyView,
         ]);
 
-        $this->copyStubToApp('StoryView', $viewPath);
+        $this->copyStubToApp('stories/StoryView', $viewPath);
 
         $this->info('Story created successfully.');
 

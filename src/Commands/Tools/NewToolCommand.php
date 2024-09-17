@@ -22,17 +22,14 @@ class NewToolCommand extends Command
         //ask for the tool name
         $name = text(label: 'What is the Tool\'s name?', required: true);
 
-        //create a group for the story if it doesn't exist
-        $studlyGroup = Str::studly($group);
-
         //make a new Story component with the name in the App\WireBook\Stories\{group} namespace
         $studlyName = Str::studly($name);
 
         //make a new Story view with the name in the resources/views/wirebook/stories/{group} directory
 
-        $storyView = str($studlyName)
+        $toolView = str($studlyName)
             ->prepend(
-                (string) str("App\\WireBook\\Stories\\{$studlyGroup}\\")
+                (string) str("App\\WireBook\\Tools\\")
                     ->replaceFirst('App\\', '')
             )
             ->replace('\\', '/')
@@ -40,23 +37,23 @@ class NewToolCommand extends Command
             ->map(fn ($segment) => Str::lower($segment))
             ->implode('.');
 
-        $storyPath = (string) str($studlyName)
+        $toolPath = (string) str($studlyName)
             ->prepend('/')
-            ->prepend(app_path('Wirebook/Stories/')."\\{$studlyGroup}\\")
+            ->prepend(app_path('Wirebook/Tools/')."\\")
             ->replace('\\', '/')
             ->replace('//', '/')
             ->append('.php');
 
         $viewPath = resource_path(
-            (string) str($storyView)
+            (string) str($toolView)
                 ->replace('.', '/')
                 ->prepend('views/')
                 ->append('.blade.php'),
         );
 
         $files = [
-            $storyPath,
-            $viewPath,
+            $toolPath,
+            $viewPath
         ];
 
         if (! $this->option('force') && $this->checkForCollision($files)) {
@@ -65,15 +62,16 @@ class NewToolCommand extends Command
             return 0;
         }
 
-        $this->copyStubToApp('Story', $storyPath, [
-            'namespace' => "App\\WireBook\\Stories\\{$studlyGroup}",
-            'story' => $studlyName,
-            'viewpath' => $storyView,
+        $this->copyStubToApp('tools/Tool', $toolPath, [
+            'namespace' => "App\\WireBook\\Tools",
+            'tool' => $studlyName,
+            'viewpath' => $toolView,
+            'component' => Str::lower($studlyName),
         ]);
 
-        $this->copyStubToApp('StoryView', $viewPath);
+        $this->copyStubToApp('tools/ToolView', $viewPath);
 
-        $this->info('Story created successfully.');
+        $this->info('Tool created successfully.');
 
         return 1;
 

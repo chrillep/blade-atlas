@@ -3,6 +3,7 @@
 namespace Arrgh11\WireBook;
 
 use Arrgh11\WireBook\Commands\Stories;
+use Arrgh11\WireBook\Commands\Tools;
 use Arrgh11\WireBook\Controllers\StoryController;
 use Arrgh11\WireBook\Livewire\Application;
 use Arrgh11\WireBook\Livewire\Tests;
@@ -29,6 +30,7 @@ class WireBookServiceProvider extends PackageServiceProvider
             ->hasMigration('create_livewire_storybook_table')
             ->hasCommands([
                 Stories\NewStoryCommand::class,
+                Tools\NewToolCommand::class,
             ]);
     }
 
