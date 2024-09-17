@@ -29,7 +29,7 @@ class NewToolCommand extends Command
 
         $toolView = str($studlyName)
             ->prepend(
-                (string) str("App\\WireBook\\Tools\\")
+                (string) str('App\\WireBook\\Tools\\')
                     ->replaceFirst('App\\', '')
             )
             ->replace('\\', '/')
@@ -39,7 +39,7 @@ class NewToolCommand extends Command
 
         $toolPath = (string) str($studlyName)
             ->prepend('/')
-            ->prepend(app_path('Wirebook/Tools/')."\\")
+            ->prepend(app_path('Wirebook/Tools/').'\\')
             ->replace('\\', '/')
             ->replace('//', '/')
             ->append('.php');
@@ -53,7 +53,7 @@ class NewToolCommand extends Command
 
         $files = [
             $toolPath,
-            $viewPath
+            $viewPath,
         ];
 
         if (! $this->option('force') && $this->checkForCollision($files)) {
@@ -63,7 +63,7 @@ class NewToolCommand extends Command
         }
 
         $this->copyStubToApp('tools/Tool', $toolPath, [
-            'namespace' => "App\\WireBook\\Tools",
+            'namespace' => 'App\\WireBook\\Tools',
             'tool' => $studlyName,
             'viewpath' => $toolView,
             'component' => Str::lower($studlyName),
