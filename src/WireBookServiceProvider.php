@@ -1,12 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Arrgh11\WireBook;
 
 use Arrgh11\WireBook\Commands\Stories;
 use Arrgh11\WireBook\Commands\Tools;
+use Arrgh11\WireBook\Controllers\StoryController;
 use Arrgh11\WireBook\Livewire\Application;
 use Arrgh11\WireBook\Livewire\Tests;
 use Arrgh11\WireBook\Tools\Viewport;
+use Illuminate\Support\Facades\Route;
 use Livewire\Livewire;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
@@ -32,15 +36,33 @@ class WireBookServiceProvider extends PackageServiceProvider
             ]);
     }
 
-    public function packageBooted()
+    public function bootingPackage(): void
+    {
+        // Register the Route macro so routes/web.php can simply call Route::wirebook();
+        Route::macro('wirebook', function (): void {
+            if (! config('wirebook.enabled', app()->isLocal())) {
+                return;
+            }
+            Route::middleware('web')
+                ->prefix('wirebook')
+                ->name('wirebook.')
+                ->group(function (): void {
+                    Route::get('/dashboard', function () {
+                        return view('wirebook::application.index');
+                    })->name('dashboard');
+
+                    Route::get('/stories/{story}', [StoryController::class, 'index'])
+                        ->name('story');
+                });
+        });
+    }
+
+    public function packageBooted(): void
     {
         Livewire::component('wirebook-app', Application::class);
         Livewire::component('wirebook-test-story', Tests\Button::class);
 
         \Arrgh11\WireBook\Facades\WireBook::registerTool(Viewport::class);
-
-
         \Arrgh11\WireBook\Facades\WireBook::discoverStories();
-
     }
 }
