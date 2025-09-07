@@ -21,7 +21,7 @@ class StoryController
 
             $stories = WireBook::getStories();
 
-            //get all stories from underneath their group
+            // get all stories from underneath their group
             $storyClass = collect($stories)->map(function ($group) use ($story) {
                 return collect($group)->filter(function ($storyObj) use ($story) {
                     return $storyObj['route'] === $story;

@@ -19,13 +19,13 @@ class NewToolCommand extends Command
     public function handle(): int
     {
 
-        //ask for the tool name
+        // ask for the tool name
         $name = text(label: 'What is the Tool\'s name?', required: true);
 
-        //make a new Story component with the name in the App\WireBook\Stories\{group} namespace
+        // make a new Story component with the name in the App\WireBook\Stories\{group} namespace
         $studlyName = Str::studly($name);
 
-        //make a new Story view with the name in the resources/views/wirebook/stories/{group} directory
+        // make a new Story view with the name in the resources/views/wirebook/stories/{group} directory
 
         $toolView = str($studlyName)
             ->prepend(

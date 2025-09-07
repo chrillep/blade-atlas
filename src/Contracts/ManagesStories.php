@@ -21,23 +21,23 @@ trait ManagesStories
         $storyGroups = [];
 
         foreach ($paths as $path) {
-            //get group folders in the path
+            // get group folders in the path
             $groups = scandir($path);
 
-            //remove . and .. from the array
+            // remove . and .. from the array
             $groups = array_diff($groups, ['.', '..']);
 
-            //loop through the groups
+            // loop through the groups
             foreach ($groups as $group) {
-                //get the stories in the group
+                // get the stories in the group
                 $stories = scandir($path.'/'.$group);
 
-                //remove . and .. from the array
+                // remove . and .. from the array
                 $stories = array_diff($stories, ['.', '..']);
 
-                //loop through the stories
+                // loop through the stories
                 foreach ($stories as $story) {
-                    //register the story file as a Livewire component
+                    // register the story file as a Livewire component
 
                     $storyName = Str::replace('.php', '', $story);
 

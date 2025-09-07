@@ -9,7 +9,7 @@ trait InteractsWithControls
     public function getControls(): array
     {
 
-        //get the controls attributes from the class, using Reflection
+        // get the controls attributes from the class, using Reflection
         $reflection = new \ReflectionClass($this);
         $controls = [];
 

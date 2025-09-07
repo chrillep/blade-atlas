@@ -19,19 +19,19 @@ class NewStoryCommand extends Command
     public function handle(): int
     {
 
-        //ask for the story name
+        // ask for the story name
         $name = text(label: 'What is the Story\'s name?', required: true);
 
         $category = text(label: 'What is the Story\'s category?', default: 'General', required: true);
 
         $folder = text(label: 'Is the Story inside a folder?', default: '', required: false);
 
-        //ask for the story description
+        // ask for the story description
 
         // //ask for the story group
         // $group = text(label: 'What is the Story\'s group?', default: 'General', required: true);
 
-        //output the story name
+        // output the story name
         $this->info("Story name: $name");
         $this->info("Story category: $category");
 
@@ -39,13 +39,13 @@ class NewStoryCommand extends Command
             $this->info("Story folder: $folder");
         }
 
-        //create a category for the story if it doesn't exist
+        // create a category for the story if it doesn't exist
         $studlyGroup = Str::studly($category);
 
-        //make a new Story component with the name in the App\WireBook\Stories\{group} namespace
+        // make a new Story component with the name in the App\WireBook\Stories\{group} namespace
         $studlyName = Str::studly($name);
 
-        //make a new Story view with the name in the resources/views/wirebook/stories/{group} directory
+        // make a new Story view with the name in the resources/views/wirebook/stories/{group} directory
 
         $storyView = str($studlyName)
             ->prepend(

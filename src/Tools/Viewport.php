@@ -6,10 +6,10 @@ namespace Arrgh11\WireBook\Tools;
 
 class Viewport extends Tool
 {
-    //Blade view
+    // Blade view
     protected static string $view = 'wirebook::application.tools.viewport.index';
 
-    //Alpine component
+    // Alpine component
     protected static string $component = <<<'JS'
 Alpine.store('viewport', {
     size: 'desktop',

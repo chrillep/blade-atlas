@@ -8,7 +8,7 @@ trait ManagesTools
 
     public function getTools()
     {
-        //initialize and return tools
+        // initialize and return tools
 
         $tools = [];
 

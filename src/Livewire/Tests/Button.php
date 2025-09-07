@@ -24,7 +24,7 @@ class Button extends Story
             'xl' => 'Extra Large',
         ]
     )]
-    public string $size = 'xs'; //xs, sm, md, lg, xl
+    public string $size = 'xs'; // xs, sm, md, lg, xl
 
     protected string $view = 'wirebook::livewire.tests.button';
 }

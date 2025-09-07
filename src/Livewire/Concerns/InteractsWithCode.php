@@ -10,7 +10,7 @@ trait InteractsWithCode
 {
     public function getCode()
     {
-        //get the code fragment from the view
+        // get the code fragment from the view
         // Get the file path using Laravel's view finder
         $bladeFilePath = View::getFinder()->find($this->view);
 

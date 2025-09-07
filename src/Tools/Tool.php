@@ -6,10 +6,10 @@ use Arrgh11\WireBook\Concerns\HasWirebookTooling;
 
 abstract class Tool implements HasWirebookTooling
 {
-    //Blade view
+    // Blade view
     protected static string $view = '';
 
-    //Alpine component
+    // Alpine component
     protected static string $component = '';
 
     public static function view(): string
