@@ -42,7 +42,7 @@ class WireBookServiceProvider extends PackageServiceProvider
 
         // Register the WireBook singleton
         $this->app->singleton(WireBook::class, function () {
-            return new WireBook();
+            return new WireBook;
         });
     }
 
