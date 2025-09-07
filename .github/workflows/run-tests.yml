@@ -58,7 +58,7 @@ jobs:
 
       - name: "Determine composer cache directory"
         id: "composer-cache-directory"
-        run: "echo \"::set-output name=directory::$(composer config cache-dir)\""
+        run: "echo \"directory=$(composer config cache-dir)\" >> $GITHUB_OUTPUT"
 
       - name: Cache php extensions & composer downloads
         uses: actions/cache@v4
