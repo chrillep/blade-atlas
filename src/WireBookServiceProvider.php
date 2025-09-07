@@ -50,7 +50,7 @@ class WireBookServiceProvider extends PackageServiceProvider
                     Route::get('/', function () {
                         return redirect()->route('wirebook.dashboard');
                     })->name('root');
-                    
+
                     Route::get('/dashboard', function () {
                         return view('wirebook::application.index');
                     })->name('dashboard');
