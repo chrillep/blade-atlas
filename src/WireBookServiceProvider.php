@@ -47,6 +47,10 @@ class WireBookServiceProvider extends PackageServiceProvider
                 ->prefix('wirebook')
                 ->name('wirebook.')
                 ->group(function (): void {
+                    Route::get('/', function () {
+                        return redirect()->route('wirebook.dashboard');
+                    })->name('root');
+                    
                     Route::get('/dashboard', function () {
                         return view('wirebook::application.index');
                     })->name('dashboard');
