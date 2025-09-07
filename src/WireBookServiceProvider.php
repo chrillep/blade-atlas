@@ -26,7 +26,7 @@ class WireBookServiceProvider extends PackageServiceProvider
             ->name('wirebook')
             ->hasConfigFile()
             ->hasViews()
-//            ->hasRoute('web')
+            ->hasRoute('web')
             ->hasMigration('create_livewire_storybook_table')
             ->hasCommands([
                 Stories\NewStoryCommand::class,
@@ -52,7 +52,6 @@ class WireBookServiceProvider extends PackageServiceProvider
 
         \Arrgh11\WireBook\Facades\WireBook::registerTool(Viewport::class);
 
-        //        \Arrgh11\WireBook\Facades\WireBook::discoverTools();
 
         \Arrgh11\WireBook\Facades\WireBook::discoverStories();
 
