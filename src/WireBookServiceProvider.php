@@ -36,6 +36,16 @@ class WireBookServiceProvider extends PackageServiceProvider
             ]);
     }
 
+    public function register(): void
+    {
+        parent::register();
+
+        // Register the WireBook singleton
+        $this->app->singleton(WireBook::class, function () {
+            return new WireBook;
+        });
+    }
+
     public function bootingPackage(): void
     {
         // Register the Route macro so routes/web.php can simply call Route::wirebook();
