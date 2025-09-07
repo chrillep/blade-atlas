@@ -36,6 +36,16 @@ class WireBookServiceProvider extends PackageServiceProvider
             ]);
     }
 
+    public function register(): void
+    {
+        parent::register();
+
+        // Register the WireBook singleton
+        $this->app->singleton(WireBook::class, function () {
+            return new WireBook();
+        });
+    }
+
     public function bootingPackage(): void
     {
         // Register the Route macro so routes/web.php can simply call Route::wirebook();
@@ -50,7 +60,7 @@ class WireBookServiceProvider extends PackageServiceProvider
                     Route::get('/', function () {
                         return redirect()->route('wirebook.dashboard');
                     })->name('root');
-                    
+
                     Route::get('/dashboard', function () {
                         return view('wirebook::application.index');
                     })->name('dashboard');
