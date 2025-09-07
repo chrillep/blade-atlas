@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Arrgh11\WireBook;
 
 use Arrgh11\WireBook\Commands\Stories;
@@ -26,7 +28,7 @@ class WireBookServiceProvider extends PackageServiceProvider
             ->name('wirebook')
             ->hasConfigFile()
             ->hasViews()
-//            ->hasRoute('web')
+            ->hasRoute('web')
             ->hasMigration('create_livewire_storybook_table')
             ->hasCommands([
                 Stories\NewStoryCommand::class,
@@ -34,27 +36,33 @@ class WireBookServiceProvider extends PackageServiceProvider
             ]);
     }
 
-    public function packageBooted()
+    public function bootingPackage(): void
+    {
+        // Register the Route macro so routes/web.php can simply call Route::wirebook();
+        Route::macro('wirebook', function (): void {
+            if (! config('wirebook.enabled', app()->isLocal())) {
+                return;
+            }
+            Route::middleware('web')
+                ->prefix('wirebook')
+                ->name('wirebook.')
+                ->group(function (): void {
+                    Route::get('/dashboard', function () {
+                        return view('wirebook::application.index');
+                    })->name('dashboard');
+
+                    Route::get('/stories/{story}', [StoryController::class, 'index'])
+                        ->name('story');
+                });
+        });
+    }
+
+    public function packageBooted(): void
     {
         Livewire::component('wirebook-app', Application::class);
         Livewire::component('wirebook-test-story', Tests\Button::class);
 
-        Route::macro('wirebook', function () {
-            Route::prefix('wirebook')->name('wirebook.')->group(function () {
-                Route::get('/dashboard', function () {
-                    return view('wirebook::application.index');
-                })->name('dashboard');
-
-                Route::get('/stories/{story}', [StoryController::class, 'index'])->name('story');
-
-            });
-        });
-
         \Arrgh11\WireBook\Facades\WireBook::registerTool(Viewport::class);
-
-        //        \Arrgh11\WireBook\Facades\WireBook::discoverTools();
-
         \Arrgh11\WireBook\Facades\WireBook::discoverStories();
-
     }
 }

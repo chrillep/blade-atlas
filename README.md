@@ -1,8 +1,8 @@
 # Storybook-like documentation package for Livewire components!
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/arrgh11/livewire-storybook.svg?style=flat-square)](https://packagist.org/packages/arrgh11/livewire-storybook)
-[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/arrgh11/livewire-storybook/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/arrgh11/livewire-storybook/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/arrgh11/livewire-storybook/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/arrgh11/livewire-storybook/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
+[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/arrgh11/livewire-storybook/run-tests.yml?branch=main\&label=tests\&style=flat-square)](https://github.com/arrgh11/livewire-storybook/actions?query=workflow%3Arun-tests+branch%3Amain)
+[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/arrgh11/livewire-storybook/fix-php-code-style-issues.yml?branch=main\&label=code%20style\&style=flat-square)](https://github.com/arrgh11/livewire-storybook/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/arrgh11/livewire-storybook.svg?style=flat-square)](https://packagist.org/packages/arrgh11/livewire-storybook)
 
 This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
@@ -11,9 +11,12 @@ This is where your description should go. Limit it to a paragraph or two. Consid
 
 [<img src="https://github-ads.s3.eu-central-1.amazonaws.com/livewire-storybook.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/livewire-storybook)
 
-We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
+We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can
+support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
 
-We highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using. You'll find our address on [our contact page](https://spatie.be/about-us). We publish all received postcards on [our virtual postcard wall](https://spatie.be/open-source/postcards).
+We highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using.
+You'll find our address on [our contact page](https://spatie.be/about-us). We publish all received postcards
+on [our virtual postcard wall](https://spatie.be/open-source/postcards).
 
 ## Installation
 
@@ -26,14 +29,14 @@ composer require arrgh11/livewire-storybook
 You can publish and run the migrations with:
 
 ```bash
-php artisan vendor:publish --tag="livewire-storybook-migrations"
+php artisan vendor:publish --tag="wirebook-migrations"
 php artisan migrate
 ```
 
 You can publish the config file with:
 
 ```bash
-php artisan vendor:publish --tag="livewire-storybook-config"
+php artisan vendor:publish --tag="wirebook-config"
 ```
 
 This is the contents of the published config file:
@@ -46,7 +49,7 @@ return [
 Optionally, you can publish the views using
 
 ```bash
-php artisan vendor:publish --tag="livewire-storybook-views"
+php artisan vendor:publish --tag="wirebook-views"
 ```
 
 ## Usage
@@ -76,8 +79,8 @@ Please review [our security policy](../../security/policy) on how to report secu
 
 ## Credits
 
-- [Sam Miller](https://github.com/arrgh11)
-- [All Contributors](../../contributors)
+* [Sam Miller](https://github.com/arrgh11)
+* [All Contributors](../../contributors)
 
 ## License
 
