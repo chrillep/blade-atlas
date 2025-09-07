@@ -1,5 +1,8 @@
 <?php
 
+declare(strict_types=1);
+
+use Arrgh11\WireBook\Controllers\StoryController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('wirebook')->name('wirebook.')->group(function () {
@@ -11,6 +14,6 @@ Route::prefix('wirebook')->name('wirebook.')->group(function () {
         return view('wirebook::application.index');
     })->name('dashboard');
 
-    Route::get('/stories/{story}', \Arrgh11\WireBook\Livewire\Tests\Button::class)->name('story');
+    Route::get('/stories/{story}', [StoryController::class, 'index'])->name('story');
 
 });
