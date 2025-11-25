@@ -26,7 +26,7 @@
     "require-dev": {
         "larastan/larastan": "^2.9||^3.6",
         "laravel/pint": "^1.25.1",
-        "laravel/prompts": "^0.1.25||^0.3",
+        "laravel/prompts": "0.3.8",
         "nunomaduro/collision": "^8.1.1||^7.10.0",
         "orchestra/testbench": "8.36.0",
         "pestphp/pest": "^2.34||^3.8",
